@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <!-- <script src="assets\javascript\game.js"></script> -->
+    </head>
+    <body>
+       
+        <div>
+            <h1>The Psychic Game!</h1>
+            <p id="directions">Try to guess what letter I am thinking of A through K only</p>
+            <p id="userchoice-text"></p>
+            <p id="computerchoice-text"></p>
+            <p id="wins-text"></p>
+            <p id="losses-text"></p>
+            <p id="guesses-left"></p>
+            <p id="guesses-so-far-text"></p>
+          </div>
+
+
+          <script type = text/javascript>
+// need to create an array of choices the computer can choose from 
+            var computerChoices = [
+                "a",
+                "b",
+                "c",
+                "d",
+                "e",
+                "f",
+                "g",
+                "h",
+                "i",
+                "j",
+                "k"
+            ];
+
+// create variables to hold the wins/ guesses left and 
+            var wins = 0;
+            var losses = 0;
+            var guessesLeft = 12;
+
+
+// creating variables to where i want to display on the html side
+            var winsText = document.getElementById("wins-text");
+            var lossesText = document.getElementById("losses-text");
+            var guessesLeftText = document.getElementById("guesses-left");
+            var userGuessesSoFar = document.getElementById("guesses-so-far-text");          
+            var computerChoice = document.getElementById("computerchoice-text");
+            var userChoice = document.getElementById("userchoice-text");
+
+
+
+            document.onkeyup = function (event) {
+                
+                var userGuess = event.key; //capturing the users guess
+                console.log(userGuess);
+                
+                
+// Randomly chooses a choice from the options array. This is the Computer's guess.
+                var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+
+//need to write an if statement to determine if the user guesses correctly...
+                if(userGuess === computerGuess) {
+                    wins++;
+                }
+                else {
+                    losses++;
+                    guessesLeft--;
+                }
+
+
+
+
+//need to display what user chose and what computer chose for testing
+                userChoice.textContent = "You chose: " + userGuess;
+                computerChoice.textContent = "The computer chose: " + computerGuess;
+                winsText.textContent = "wins: " + wins;
+                lossesText.textContent = "losses: " + losses;
+                guessesLeftText.textConent = "Guesses Left" + guessesLeft;
+                
+
+
+
+
+
+
+            }
+          </script>
+
+
+
+
+        <script src="" async defer></script>
+    </body>
+</html>
