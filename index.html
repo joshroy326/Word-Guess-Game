@@ -53,7 +53,8 @@
             var computerChoice = document.getElementById("computerchoice-text");
             var userChoice = document.getElementById("userchoice-text");
 
-
+            var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+            console.log(computerGuess)
 
             document.onkeyup = function (event) {
                 
@@ -62,26 +63,33 @@
                 
                 
 // Randomly chooses a choice from the options array. This is the Computer's guess.
-                var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
 
 //need to write an if statement to determine if the user guesses correctly...
                 if(userGuess === computerGuess) {
                     wins++;
+                    //insert funciton to reset 
                 }
                 else {
-                    losses++;
                     guessesLeft--;
                 }
+
+                if (guessesLeft === 0) {
+                    losses++;
+                    //insert funciton to reset
+
+                }
+
+                console.log(guessesLeft)
 
 
 
 
 //need to display what user chose and what computer chose for testing
                 userChoice.textContent = "You chose: " + userGuess;
-                computerChoice.textContent = "The computer chose: " + computerGuess;
+                // computerChoice.textContent = "The computer chose: " + computerGuess;
                 winsText.textContent = "wins: " + wins;
                 lossesText.textContent = "losses: " + losses;
-                guessesLeftText.textConent = "Guesses Left" + guessesLeft;
+                guessesLeftText.textContent = "Guesses Left: " + guessesLeft;
                 
 
 
